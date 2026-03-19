@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learna | Short Summary Style Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- HERO PAGE -->
+  <div id="view-hero" class="page hero-page">
+    <div class="hero">
+      <div class="badge">Live AI Tutoring</div>
+
+      <h1 class="title">
+        Upload your
+        <div class="spinner">
+          <div class="words">
+            <span class="word">PDFs</span>
+            <span class="word">Slides</span>
+            <span class="word">Notes</span>
+            <span class="word">Diagrams</span>
+            <span class="word">Answers</span>
+          </div>
+        </div>
+        and actually learn them.
+      </h1>
+
+      <p class="subtitle">
+        Drop in your study materials. Our AI reads everything, breaks it down,
+        and teaches you step-by-step — then checks you actually understand.
+      </p>
+
+      <div class="promise">
+        <span>Test one lesson style at a time.</span>
+      </div>
+
+      <div class="cta-group">
+        <button class="main-btn" id="startBtn">Preview Short Summary Style</button>
+        <div class="social-proof">Frontend-only design prototype</div>
+      </div>
+
+      <div class="features">
+        <div class="pill">Short guided lesson</div>
+        <div class="pill">Strong example</div>
+        <div class="pill">Quick quiz</div>
+        <div class="pill">Completion step</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW LESSON FLOW -->
+  <div id="view-lesson" class="page hidden lesson-page">
+    <div class="lesson-shell">
+      <div class="lesson-topbar">
+        <button class="top-link" id="backToHeroBtn">← Back</button>
+        <div class="topbar-meta">Short Summary Style Demo</div>
+      </div>
+
+      <div class="device">
+        <div class="progress-header">
+          <div class="progress-meta">
+            <span class="label" id="progressLabel">Orientation</span>
+            <span class="step-indicator" id="stepBadge">1 of 4</span>
+          </div>
+
+          <div class="progress-track">
+            <div class="seg active" id="seg1"><div class="fill"></div></div>
+            <div class="seg" id="seg2"><div class="fill"></div></div>
+            <div class="seg" id="seg3"><div class="fill"></div></div>
+            <div class="seg" id="seg4"><div class="fill"></div></div>
+          </div>
+        </div>
+
+        <!-- STEP 1 -->
+        <section class="chunk active" id="chunk-1">
+          <div class="chunk-label">Session Briefing</div>
+          <h1>The basics of <strong>Carbon Credits</strong></h1>
+          <p class="subtitle">
+            Four short steps. Each one teaches a single idea, gives one strong example,
+            then checks if it stuck.
+          </p>
+
+          <div class="smart-card intro-card">
+            <div class="card-kicker">Today’s lesson flow</div>
+            <div class="card-body">
+              You’ll get one quick concept, one clear example, one short quiz, then a completion step.
+            </div>
+          </div>
+
+          <ul class="roadmap">
+            <li>
+              <div class="num current">1</div>
+              <div class="info">
+                <h3>The Core Concept</h3>
+                <p>What one credit actually represents</p>
+              </div>
+            </li>
+            <li class="dimmed">
+              <div class="num upcoming">2</div>
+              <div class="info">
+                <h3>How the Market Works</h3>
+                <p>Buying, selling and compliance</p>
+              </div>
+            </li>
+            <li class="dimmed">
+              <div class="num upcoming">3</div>
+              <div class="info">
+                <h3>Pricing Logic</h3>
+                <p>What drives the cost of a credit</p>
+              </div>
+            </li>
+            <li class="dimmed">
+              <div class="num upcoming">4</div>
+              <div class="info">
+                <h3>Offsets vs Allowances</h3>
+                <p>Two types of credits, one key difference</p>
+              </div>
+            </li>
+          </ul>
+
+          <button class="btn btn-dark" data-step="2">Begin lesson →</button>
+        </section>
+
+        <!-- STEP 2 -->
+        <section class="chunk" id="chunk-2">
+          <div class="chunk-label">Concept 01</div>
+          <h1>What is a <strong>Carbon Credit</strong>?</h1>
+          <p class="micro-goal">Goal: understand what one credit lets a company do.</p>
+
+          <div class="sep"></div>
+
+          <div class="main-teach-card">
+            <div class="teach-kicker">Short explanation</div>
+            <p class="explanation">
+              A carbon credit is a <strong>permit</strong>. Each credit gives a company the right
+              to emit exactly <strong>one tonne</strong> of carbon dioxide. No credit, no permission.
+            </p>
+          </div>
+
+          <div class="support support-example">
+            <div class="support-label">Strong example</div>
+            <p>
+              A factory produces 10 tonnes of CO₂ per year. It only holds 8 credits.
+              It must <strong>purchase 2 more</strong> on the open market — or face a financial penalty.
+            </p>
+          </div>
+
+          <div class="support support-hook">
+            <div class="support-label">Memory hook</div>
+            <p><strong>1 credit = permission for 1 tonne.</strong></p>
+          </div>
+
+          <button class="btn btn-dark" data-step="3">Test my understanding →</button>
+        </section>
+
+        <!-- STEP 3 -->
+        <section class="chunk" id="chunk-3">
+          <div class="quiz-header">
+            <div class="icon-wrap">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/>
+                <circle cx="12" cy="12" r="10"/>
+              </svg>
+            </div>
+            <h2>How much CO₂ does <strong>one credit</strong> cover?</h2>
+            <p class="hint">Pick one answer</p>
+          </div>
+
+          <div class="quiz-options" id="quizOptions">
+            <button class="quiz-opt" data-correct="false">
+              <span class="letter">A</span>
+              <span>10 tonnes</span>
+            </button>
+            <button class="quiz-opt" data-correct="true">
+              <span class="letter">B</span>
+              <span>1 tonne</span>
+            </button>
+            <button class="quiz-opt" data-correct="false">
+              <span class="letter">C</span>
+              <span>100 kilograms</span>
+            </button>
+          </div>
+
+          <div class="feedback-banner" id="feedback">
+            <div class="fb-icon" id="fbIcon"></div>
+            <div class="fb-text">
+              <h4 id="fbTitle"></h4>
+              <p id="fbDesc"></p>
+            </div>
+          </div>
+
+          <div id="quizNext" class="quiz-next hidden">
+            <button class="btn btn-accent" data-step="4">Continue →</button>
+          </div>
+        </section>
+
+        <!-- STEP 4 -->
+        <section class="chunk" id="chunk-4">
+          <div class="completion">
+            <div class="done-ring">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+
+            <h1>Part 1 <strong>complete</strong></h1>
+            <p class="subtitle">You’ve nailed the core concept of carbon credits.</p>
+
+            <div class="stat-row">
+              <div class="stat">
+                <div class="val" id="statScore">—</div>
+                <div class="lbl">Score</div>
+              </div>
+              <div class="stat">
+                <div class="val">1/4</div>
+                <div class="lbl">Parts done</div>
+              </div>
+              <div class="stat">
+                <div class="val">&lt;2m</div>
+                <div class="lbl">Time</div>
+              </div>
+            </div>
+
+            <div class="smart-card next-card">
+              <div class="card-kicker">Next part preview</div>
+              <div class="card-body">Next: how the market works and why companies buy extra credits.</div>
+            </div>
+
+            <button class="btn btn-accent" style="margin-bottom: 10px;">Next part →</button>
+            <button class="btn btn-ghost" id="restartBtn">Restart this part</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
