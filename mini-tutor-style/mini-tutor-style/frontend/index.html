@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learna | Short Summary Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- HERO -->
+  <div id="view-hero" class="page hero-page">
+    <div class="hero">
+      <div class="badge">Live AI Tutoring</div>
+
+      <h1 class="title">
+        Upload your
+        <div class="spinner">
+          <div class="words">
+            <span class="word">PDFs</span>
+            <span class="word">Slides</span>
+            <span class="word">Notes</span>
+            <span class="word">Diagrams</span>
+            <span class="word">Answers</span>
+          </div>
+        </div>
+        and actually learn them.
+      </h1>
+
+      <p class="hero-subtitle">
+        Drop in your study materials. Our AI reads everything, breaks it down,
+        and teaches you step-by-step — then checks you actually understand.
+      </p>
+
+      <div class="promise">
+        <span>Now wired to real uploaded content.</span>
+      </div>
+
+      <div class="cta-group">
+        <button class="main-btn" id="startBtn">Start Learning</button>
+        <div class="social-proof">Short Summary Style Prototype</div>
+      </div>
+
+      <div class="features">
+        <div class="pill">Upload a file</div>
+        <div class="pill">One clear idea at a time</div>
+        <div class="pill">Strong example</div>
+        <div class="pill">Quick check</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPLOAD -->
+  <div id="view-upload" class="page hidden">
+    <div class="upload-card">
+      <h2>Ready to Learn?</h2>
+      <p class="upload-copy">Choose your preferences, upload one file, and generate the first lesson.</p>
+
+      <div class="personalize-grid">
+        <div class="field-group">
+          <label for="subjectSelect">Subject</label>
+          <select id="subjectSelect">
+            <option value="General">General</option>
+            <option value="Science">Science</option>
+            <option value="Business">Business</option>
+            <option value="Economics">Economics</option>
+            <option value="Medicine">Medicine</option>
+            <option value="History">History</option>
+            <option value="Maths">Maths</option>
+            <option value="Law">Law</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="levelSelect">Level</label>
+          <select id="levelSelect">
+            <option value="Undergrad">Undergrad</option>
+            <option value="Postgrad">Postgrad</option>
+            <option value="High School">High School</option>
+            <option value="Professional">Professional</option>
+          </select>
+        </div>
+
+        <div class="field-group full-width">
+          <label for="styleSelect">Learning style</label>
+          <select id="styleSelect">
+            <option value="Explain simply, then quiz me">Explain simply, then quiz me</option>
+            <option value="Talk me through it back and forth">Talk me through it back and forth</option>
+            <option value="Give me the big picture first, then details">Give me the big picture first, then details</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="fileInput" class="upload-dropzone">
+        <span>Click to upload PDF, notes, or text files</span>
+        <small>PDF, TXT, MD, JSON</small>
+      </label>
+      <input id="fileInput" type="file" hidden />
+
+      <div id="fileName" class="file-name hidden"></div>
+
+      <button class="action-btn" id="processBtn" disabled>Generate Lesson</button>
+      <button class="text-btn" id="backBtn">Back</button>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div id="view-loading" class="page hidden">
+    <div class="loader-wrap">
+      <div class="loader"></div>
+      <h3>Building your lesson...</h3>
+      <p>Reading your file, extracting text, and generating the first teaching flow.</p>
+    </div>
+  </div>
+
+  <!-- LESSON -->
+  <div id="view-lesson" class="page hidden lesson-page">
+    <div class="lesson-wrap">
+      <div class="lesson-topbar">
+        <button class="back-link" id="lessonBackBtn">← Back</button>
+        <div class="topbar-note" id="topbarNote">Short Summary Style Demo</div>
+      </div>
+
+      <div class="session-intro-banner" id="sessionIntroBanner"></div>
+
+      <div class="device">
+        <div class="path-progress">
+          <div class="path-node active" id="node1">
+            <div class="path-dot">1</div>
+            <div class="path-label">Intro</div>
+          </div>
+          <div class="path-line"><div class="fill" id="line1"></div></div>
+
+          <div class="path-node" id="node2">
+            <div class="path-dot">2</div>
+            <div class="path-label">Learn</div>
+          </div>
+          <div class="path-line"><div class="fill" id="line2"></div></div>
+
+          <div class="path-node" id="node3">
+            <div class="path-dot">3</div>
+            <div class="path-label">Check</div>
+          </div>
+          <div class="path-line"><div class="fill" id="line3"></div></div>
+
+          <div class="path-node" id="node4">
+            <div class="path-dot">✓</div>
+            <div class="path-label">Done</div>
+          </div>
+        </div>
+
+        <!-- STEP 1 -->
+        <section class="chunk active" id="chunk-1">
+          <div class="chunk-tag">Session Briefing</div>
+          <h1 id="introTitle">Your lesson topic</h1>
+          <p class="subtitle" id="introSubtitle">A short lesson from your uploaded material.</p>
+
+          <div class="intro-panel">
+            <div class="intro-panel-label">What we’ll cover</div>
+            <div id="roadmapList"></div>
+          </div>
+
+          <button class="btn btn-dark" id="beginLessonBtn">Begin lesson →</button>
+        </section>
+
+        <!-- STEP 2 -->
+        <section class="chunk" id="chunk-2">
+          <div class="chunk-tag" id="lessonLabel">Concept 01</div>
+          <h1 id="lessonTitle">Topic title</h1>
+          <p class="lesson-goal" id="lessonGoal">Goal line</p>
+
+          <div class="sep"></div>
+
+          <div class="teaching-card">
+            <div class="teaching-label">Core explanation</div>
+            <p class="explanation" id="explanationText"></p>
+          </div>
+
+          <div class="annotation-wrap" id="annotationWrap">
+            <div class="annotation" id="annotationText"></div>
+          </div>
+
+          <div class="support" id="exampleBox">
+            <div class="slabel" id="exampleLabel">Strong example</div>
+            <p id="exampleText"></p>
+          </div>
+
+          <div class="margin-note" id="marginNote"></div>
+
+          <div class="diagram-box hidden" id="diagramBox"></div>
+
+          <button class="btn btn-dark" id="toQuizBtn">Test my understanding →</button>
+          <button class="btn btn-ghost" id="retryBtn" style="margin-top:10px;">Teach this more simply</button>
+        </section>
+
+        <!-- STEP 3 -->
+        <section class="chunk" id="chunk-3">
+          <div class="micro-recap">
+            <div class="recap-tag"><span class="dot"></span> Quick reminder</div>
+            <p id="microRecapText"></p>
+          </div>
+
+          <div class="quiz-header">
+            <div class="q-icon">✓</div>
+            <h2 id="quizQuestion">Question</h2>
+            <p class="qhint">Pick one — no pressure</p>
+          </div>
+
+          <div class="quiz-opts" id="quizOpts"></div>
+
+          <div class="fb-banner" id="fb">
+            <div class="fb-ico" id="fbIco"></div>
+            <div class="fb-body">
+              <h4 id="fbT"></h4>
+              <p id="fbD"></p>
+              <p id="fbExtra" style="margin-top:6px;"></p>
+            </div>
+          </div>
+
+          <div id="quizNext" class="hidden quiz-next">
+            <button class="btn btn-accent" id="toSummaryBtn">See my summary →</button>
+          </div>
+        </section>
+
+        <!-- STEP 4 -->
+        <section class="chunk" id="chunk-4">
+          <div class="summary-header">
+            <div class="done-ring">✓</div>
+            <h1>Part <strong>complete</strong></h1>
+            <p class="subtitle summary-subtitle">Here’s what you walked away with.</p>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-cell">
+              <div class="sv" id="statScore">—</div>
+              <div class="sl">Accuracy</div>
+            </div>
+            <div class="stat-cell">
+              <div class="sv" id="statProgress">1/1</div>
+              <div class="sl">Parts done</div>
+            </div>
+            <div class="stat-cell">
+              <div class="sv">&lt; 2m</div>
+              <div class="sl">Time spent</div>
+            </div>
+          </div>
+
+          <div class="takeaway">
+            <div class="tk-label">Key takeaway</div>
+            <p id="takeawayText"></p>
+          </div>
+
+          <div class="summary-section">
+            <div class="section-label">What you now understand</div>
+            <ul class="know-list" id="summaryBullets"></ul>
+          </div>
+
+          <div class="why-box">
+            <div class="wlabel">Why this matters</div>
+            <p id="whyText"></p>
+          </div>
+
+          <div class="next-teaser">
+            <div class="nt-num" id="nextNum">02</div>
+            <div class="nt-info">
+              <div class="up-next">Up next</div>
+              <h4 id="nextTeaserTitle">Next part</h4>
+            </div>
+            <div class="nt-arrow">→</div>
+          </div>
+
+          <button class="btn btn-dark" id="nextChunkBtn">Load next part</button>
+          <button class="btn btn-ghost" id="restartChunkBtn" style="margin-top:10px;">Restart this part</button>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
