@@ -33,6 +33,7 @@ const exampleText = document.getElementById("exampleText");
 const marginNote = document.getElementById("marginNote");
 const microRecapText = document.getElementById("microRecapText");
 const diagramBox = document.getElementById("diagramBox");
+const progressNodes = Array.from(document.querySelectorAll(".path-node"));
 
 const quizQuestion = document.getElementById("quizQuestion");
 const quizOpts = document.getElementById("quizOpts");
@@ -117,6 +118,47 @@ function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text || "";
   return div.innerHTML;
+}
+
+function renderTeachingBreakdown(lesson) {
+  const breakdown = lesson?.teachingBreakdown;
+
+  if (!breakdown || typeof breakdown !== "object") {
+    explanationText.innerHTML = `
+      <div class="explanation-fallback">${escapeHtml(lesson?.explanation || "")}</div>
+    `;
+    return;
+  }
+
+  const sections = [
+    {
+      title: "This is the concept",
+      text: breakdown.concept || ""
+    },
+    {
+      title: "This is the key thing to notice",
+      text: breakdown.keyNotice || ""
+    },
+    {
+      title: "This is how it works",
+      text: breakdown.howItWorks || ""
+    },
+    {
+      title: "Don’t confuse it with this",
+      text: breakdown.confusion || ""
+    }
+  ].filter((section) => section.text && section.text.trim());
+
+  explanationText.innerHTML = sections
+    .map(
+      (section) => `
+        <div class="teach-section">
+          <div class="teach-section-title">${escapeHtml(section.title)}</div>
+          <div class="teach-section-text">${escapeHtml(section.text)}</div>
+        </div>
+      `
+    )
+    .join("");
 }
 
 function renderDiagram(diagram) {
@@ -236,7 +278,7 @@ function renderLesson(lesson) {
   lessonLabel.textContent = lesson.sessionLabel || `Concept ${String(currentChunkIndex + 1).padStart(2, "0")}`;
   lessonTitle.innerHTML = `${escapeHtml(lesson.topicTitle || "Topic")}`;
   lessonGoal.textContent = lesson.lessonGoal || "";
-  explanationText.textContent = lesson.explanation || "";
+  renderTeachingBreakdown(lesson);
 
   if (lesson.marginNote) {
   annotationWrap.classList.remove("hidden");
@@ -422,7 +464,11 @@ function restartCurrentChunk() {
 
 startBtn.addEventListener("click", () => showView("upload"));
 backBtn.addEventListener("click", () => showView("hero"));
-lessonBackBtn.addEventListener("click", () => showView("upload"));
+lessonBackBtn.addEventListener("click", () => {
+  if (!currentLesson) return;
+  showView("lesson");
+  goTo(1);
+});
 
 fileInput.addEventListener("change", () => {
   const file = fileInput.files[0];
@@ -432,6 +478,13 @@ fileInput.addEventListener("change", () => {
   fileName.textContent = `Selected: ${file.name}`;
   fileName.classList.remove("hidden");
   processBtn.disabled = false;
+});
+
+progressNodes.forEach((node, index) => {
+  node.addEventListener("click", () => {
+    if (!currentLesson) return;
+    goTo(index + 1);
+  });
 });
 
 processBtn.addEventListener("click", loadUpload);
